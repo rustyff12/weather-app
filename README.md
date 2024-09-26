@@ -17,3 +17,9 @@ Weather app for The Odin Project
 6.  Add any styling you like! [ ]
 
 7.  Optional: add a ‘loading’ component that displays from the time the form is submitted until the information comes back from the API. Use DevTools to test for low-end devices. [ ]
+
+### Extras
+
+[ ] - Celsius and Fahrenheit
+[ ] - Input string cleaning
+[ ] - Edge cases of currently selected

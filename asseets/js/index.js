@@ -20,6 +20,20 @@ const fahrenheitToCelsius = (str) => {
 	return result.toString();
 };
 
+// Clean string
+const cleanString = (str) => {
+	let newStr = str.trim();
+
+	let caseChange = newStr
+		.split(" ")
+		.map(
+			(word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+		)
+		.join(" ");
+
+	return caseChange.split(" ").join("%20");
+};
+
 formSelection.addEventListener("submit", (e) => {
 	e.preventDefault();
 
@@ -32,24 +46,46 @@ formSelection.addEventListener("submit", (e) => {
 				`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city},${country}?key=${apiKey}`
 			);
 			const weatherData = await res.json();
-			const tempData = weatherData.days[0].temp.toString();
-			const highData = weatherData.days[0].tempmin.toString();
-			const lowData = weatherData.days[0].tempmax.toString();
+			const tempData = parseInt(weatherData.days[0].temp);
+			const highData = parseInt(weatherData.days[0].tempmin);
+			const lowData = parseInt(weatherData.days[0].tempmax);
+			const celButton = document.querySelector("#cel");
 
-			document.querySelector("#temp span").textContent = `${tempData}`;
-			document.querySelector(
-				"#daily-high span"
-			).textContent = `${highData}`;
-			document.querySelector(
-				"#daily-low span"
-			).textContent = `${lowData}`;
+			if (celButton.classList.contains("active")) {
+				document.querySelector(
+					"#temp .data"
+				).textContent = `${fahrenheitToCelsius(tempData)}`;
+				document.querySelector(
+					"#daily-high .data"
+				).textContent = `${fahrenheitToCelsius(highData)}`;
+				document.querySelector(
+					"#daily-low .data"
+				).textContent = `${fahrenheitToCelsius(lowData)}`;
+			} else {
+				document.querySelector(
+					"#temp .data"
+				).textContent = `${tempData}`;
+				document.querySelector(
+					"#daily-high .data"
+				).textContent = `${highData}`;
+				document.querySelector(
+					"#daily-low .data"
+				).textContent = `${lowData}`;
+
+				document.querySelector("#temp .symbol").textContent = " °F";
+				document.querySelector("#daily-high .symbol").textContent =
+					" °F";
+				document.querySelector("#daily-low .symbol").textContent =
+					" °F";
+			}
 
 			submitted = true;
 		} catch (err) {
 			console.log("There was an error", err);
 		}
 	};
-	fetchData(countryToSearch, cityToSearch);
+
+	fetchData(cleanString(countryToSearch), cleanString(cityToSearch));
 });
 
 const changeToCel = () => {
