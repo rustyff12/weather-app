@@ -1,0 +1,147 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	/* colors */
+	--clr-bg-main: #25283d;
+	--clr-secondary: #03a4da;
+	--clr-accent: #f25917;
+	--clr-white: #e4e4e4;
+	--clr-black: #000000;
+
+	/* layout*/
+	--gap-small: 1rem;
+}
+
+label,
+input,
+p,
+button {
+	font-weight: 700;
+}
+
+body {
+	/* font-family: "Helvetica, Arial, sans-serif"; */
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	color: var(--clr-accent);
+	background-color: var(--clr-bg-main);
+	min-height: 100dvh;
+}
+
+h1 {
+	background-color: var(--clr-black);
+	padding: 1rem;
+	display: flex;
+	justify-content: center;
+	text-decoration: underline;
+	text-decoration-color: var(--clr-bg-main);
+	text-decoration-style: solid;
+}
+
+.main-container {
+	margin: 2rem 1rem;
+	padding: 1rem;
+	background-color: var(--clr-black);
+	border: 2px solid var(--clr-white);
+	border-radius: 5px;
+	padding: 2rem 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: var(--gap-small);
+}
+
+#location-selection,
+.results-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: var(--gap-small);
+}
+
+.location-item {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	max-width: 70%;
+}
+
+.location-item > input {
+	background-color: var(--clr-bg-main);
+	color: var(--clr-accent);
+	border: 2px solid var(--clr-accent);
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.location-item > input::placeholder {
+	color: var(--clr-accent);
+}
+
+.submit-button {
+	max-width: 50%;
+	border: 2px solid var(--clr-accent);
+	border-radius: 5px;
+	color: var(--clr-accent);
+	background-color: var(--clr-bg-main);
+	font-size: 16px;
+	padding: 0.7rem;
+	cursor: pointer;
+	transition: 0.5s ease-in-out;
+}
+
+.submit-button:hover,
+.submit-button:focus {
+	border: 2px solid var(--clr-accent);
+	border-radius: 5px;
+	color: var(--clr-bg-main);
+	background-color: var(--clr-accent);
+}
+
+/* 481px — 768px: iPads, Tablets */
+@media screen and (min-width: 480px) {
+	.main-container {
+		margin: 0 auto;
+		margin-top: 2rem;
+		max-width: 400px;
+	}
+}
+/* 769px — 1024px: Small screens, laptops */
+@media screen and (min-width: 768px) {
+	.main-container {
+		margin: 0 auto;
+		margin-top: 2rem;
+		padding: 2re 4rem;
+		max-width: 500px;
+	}
+
+	.location-item > input {
+		max-width: 400px;
+	}
+	.submit-button {
+		width: 200px;
+	}
+}
+/* 1025px — 1200px: Desktops, large screens */
+@media screen and (min-width: 1024px) {
+	.main-container {
+		margin: 0 auto;
+		margin-top: 2rem;
+		padding: 3rem 5rem;
+		max-width: 700px;
+	}
+}
+/* 1201px and more —  Extra large screens, TV */
+@media screen and (min-width: 1201px) {
+	.main-container {
+		margin: 0 auto;
+		margin-top: 2rem;
+		padding: 3rem 7rem;
+		max-width: 900px;
+	}
+}
