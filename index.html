@@ -18,14 +18,11 @@
 			property="og:type"
 			content="website"
 		/>
-		<!-- <meta property="og:url" content="https://example.com"> -->
-		<!-- <meta property="og:image" content="https://example.com/image.jpg"> -->
 		<meta
 			property="og:description"
 			content="A friendly little weather app to keep you informed"
 		/>
-		<!-- <meta property="og:site_name" content="Site Name"> -->
-		<!-- <meta name="twitter:card" content="summary_large_image"> -->
+
 		<title>Weather App</title>
 		<link
 			rel="stylesheet"
@@ -74,20 +71,37 @@
 					class="results"
 					id="temp"
 				>
-					Current Temperature:
+					Current Temp: <span class="data"></span
+					><span class="symbol"> °F</span>
 				</p>
 				<p
 					class="results"
 					id="daily-high"
 				>
-					Daily High:
+					Daily High: <span class="data"></span
+					><span class="symbol"> °F</span>
 				</p>
 				<p
 					class="results"
 					id="daily-low"
 				>
-					Daily Low:
+					Daily Low: <span class="data"></span
+					><span class="symbol"> °F</span>
 				</p>
+			</div>
+			<div class="choice-container">
+				<button
+					class="temp-choice"
+					id="cel"
+				>
+					Celsius
+				</button>
+				<button
+					class="temp-choice active"
+					id="fahr"
+				>
+					Fahrenheit
+				</button>
 			</div>
 		</div>
 		<script src="./asseets/js/index.js"></script>
